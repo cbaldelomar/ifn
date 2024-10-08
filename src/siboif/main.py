@@ -8,7 +8,7 @@ from enum import Enum
 from typing import Optional
 import requests
 import pandas as pd
-import utils
+from utils import get_date_str
 
 # Añó mínimo con información disponible en el servicio web de la SIBOIF
 _INITIAL_YEAR = 2017
@@ -25,7 +25,7 @@ def _fetch_data(year: int, month: int):
     :rtype: JSON | None
     """
 
-    fecha_ini = fecha_fin = utils.get_date_str(year, month)
+    fecha_ini = fecha_fin = get_date_str(year, month)
 
     base_url = "https://www.siboif.gob.ni/rest/estadisticas"
     headers = {"User-Agent": "Python bot 1.0"}

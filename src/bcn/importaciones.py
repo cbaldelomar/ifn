@@ -3,7 +3,7 @@ Modulo para el Procesamiento del Archivo **Importaciones CIF: mercancías**.
 """
 
 import pandas as pd
-import utils
+from utils import meses_dict
 
 
 def procesar_datos(file_path):
@@ -45,7 +45,7 @@ def procesar_datos(file_path):
     df_data["MES"] = df_data["Año y mes"]
 
     # Actualizar la columna 'MES' con el número del mes mapeando contra el diccionario de meses
-    df_data["MES"] = df_data["MES"].map(utils.meses_dict)
+    df_data["MES"] = df_data["MES"].map(meses_dict)
 
     # Eliminar cualquier fila donde el año sea NaN (si existiera)
     df_data = df_data.dropna(subset=["Año y mes"])

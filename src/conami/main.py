@@ -10,7 +10,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 import xlrd
-import utils
+from utils import meses_dict
 
 _CONAMI_URL = "http://www.conami.gob.ni/index.php/est-reportes?reportName=/RptEstadisticas/RptEstadoSituacion&tituloreport=Estado de Situación Financiera&cat=Reportes Contables"
 
@@ -53,7 +53,7 @@ def _get_periodos() -> list[dict]:
         month_name, year = text.split("-")
 
         # Obtener el numero del mes
-        month = utils.meses_dict[month_name]
+        month = meses_dict[month_name]
 
         # Llenar el diccionario, donde la key será el periodo_id y el value será la tuple (año, mes)
         periodos.append(
