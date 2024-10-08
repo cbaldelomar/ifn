@@ -7,13 +7,13 @@ El objetivo del proyecto es consolidar esta información en una base de datos ce
 ## Requisitos previos
 
 - Python 3.12 o superior.
-- SQL Server instalado y configurado.
+- SQL Server 2019 o superior, instalado y configurado.
 - Asegúrate de tener acceso a internet para descargar los datos de los orígenes.
 
 ## Orígenes procesados
-- Banco Central de Nicaragua (BCN)
-- Superintendencia de Bancos (SIBOIF)
-- Comisión Nacional de Microfinanzas (CONAMI)
+- [Banco Central de Nicaragua (BCN)](https://bcn.gob.ni/publicaciones/sector-externo)
+- [Superintendencia de Bancos (SIBOIF)](https://www.siboif.gob.ni/consultas/webservices-informes)
+- [Comisión Nacional de Microfinanzas (CONAMI)](http://www.conami.gob.ni/index.php/est-reportes?reportName=/RptEstadisticas/RptEstadoSituacion&tituloreport=Estado%20de%20Situaci%C3%B3n%20Financiera&cat=Reportes%20Contables)
 
 ## Indicadores procesados
 
