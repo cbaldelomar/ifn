@@ -9,6 +9,7 @@ from typing import Optional
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import xlrd
 import utils
 
 _CONAMI_URL = "http://www.conami.gob.ni/index.php/est-reportes?reportName=/RptEstadisticas/RptEstadoSituacion&tituloreport=Estado de Situación Financiera&cat=Reportes Contables"
@@ -178,8 +179,18 @@ def _process_file(
     if not file_path:
         return df_empty
 
+    # Leer el archivo de la CONAMI directamente muestra el warning:
+    # WARNING *** file size (81856) not 512 + multiple of sector size (512)
+    # Para solucionar esto se lee directamente del WorkBook con xlrd
+    # https://github.com/pandas-dev/pandas/issues/16620
+    # df_data = pd.read_excel(file_path, skiprows=9)
+
+    # Suppressing XLRD warnings redirecting standard error outputs to null device
+    with open(os.devnull, "w", encoding="utf-8") as log:
+        wb = xlrd.open_workbook(file_path, logfile=log)
+
     # Cargar los datos del reporte en un DataFrame, omitiendo las primeras nueve filas
-    df_data = pd.read_excel(file_path, skiprows=9)
+    df_data = pd.read_excel(wb, skiprows=9)
 
     if df_data.empty:
         return df_empty
