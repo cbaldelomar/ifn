@@ -2,7 +2,7 @@
 
 Este proyecto en **Python** descarga, procesa y almacena información de indicadores financieros relevantes de varias instituciones de Nicaragua.
 
-El objetivo del proyecto es consolidar esta información en una base de datos centralizada para facilitar el análisis y la visualización futura.
+El objetivo del proyecto es consolidar esta información en una base de datos centralizada para facilitar el análisis y la visualización de los datos.
 
 ## Requisitos previos
 
