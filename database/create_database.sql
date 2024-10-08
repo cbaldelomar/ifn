@@ -11,8 +11,8 @@ GO
 IF NOT EXISTS (SELECT name FROM sys.server_principals WHERE name = 'my_login')
 BEGIN
     PRINT 'Creating login'
-    CREATE LOGIN my_login WITH PASSWORD = '123456';
-    -- , CHECK_EXPIRATION = OFF, CHECK_POLICY = OFF
+    CREATE LOGIN my_login WITH PASSWORD = '123456', CHECK_POLICY = OFF;
+    -- , CHECK_EXPIRATION = OFF
 END
 GO
 
@@ -146,6 +146,9 @@ CREATE INDEX FK_Valor_Indicador_IdIndicador ON Valor(IdIndicador)
 CREATE INDEX FK_Valor_Periodo_IdPeriodo ON Valor(IdPeriodo)
 GO
 
+
+PRINT 'Creating SPs'
+GO
 
 /*
 dbo.uspFill_DimIndicador
