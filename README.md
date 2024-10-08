@@ -34,7 +34,7 @@ El nombre de la base de datos usada es `IndicadoresDW`.
 
 ### Crear base de datos
 
-El script para crear la base de datos que se encuentra en `/database`.
+El script para crear la base de datos se encuentra en `/database`.
 
 Puedes ejecutar el script desde **SSMS** o bien desde la terminal:
 
