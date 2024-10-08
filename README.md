@@ -58,7 +58,19 @@ Estas son configuradas desde el script de creación de la base de datos.
 
 ## Ejecución
 
-El proyecto permite procesar los indicadores financieros de varias maneras. Dependiendo de los parámetros que pases, puedes procesar todos los periodos, el último periodo disponible, o un periodo específico.
+El proyecto permite procesar los indicadores financieros de varias maneras. Dependiendo de los parámetros, puede procesar todos los periodos, el último periodo disponible, o un periodo específico. E incluso se puede especificar el origen.
+
+```bash
+py src/procesar.py [periodo] [origen]
+```
+
+Donde
+
+- **periodo**: "ultimo", "todos" o "yyyymm"
+- **origen**: "BCN", "SIBOIF" o "CONAMI"
+
+
+### Ejemplo
 
 - **Procesar todos los periodos**
 
@@ -66,12 +78,17 @@ El proyecto permite procesar los indicadores financieros de varias maneras. Depe
 py src/procesar.py todos
 ```
 
-- **Último periodo disponible**
+- **Procesar último periodo disponible**
 ```bash
-py src/procesar.py
+py src/procesar.py ultimo
 ```
 
-- **Periodo especifico (yyyymm)**
+- **Procesar periodo especifico (yyyymm)**
 ```bash
 py src/procesar.py 202403
+```
+
+- **Procesar último periodo para el BCN**
+```bash
+py src/procesar.py ultimo BCN
 ```
