@@ -44,9 +44,18 @@ def _process_data(periodo, origen):
     elif periodo == "ultimo":
         print("Procesando el último periodo")
     else:
-        year, month = int(periodo[:4]), int(periodo[-2:])
+        try:
+            year, month = int(periodo[:4]), int(periodo[-2:])
+        except ValueError:
+            print("Se especificó un periodo inválido.")
+            return
+
         print(f"Procesando periodo: {year} - {month}")
         especifico = True
+
+    if origen not in ("BCN", "SIBOIF", "CONAMI", None):
+        print("Se especificó un origen inválido.")
+        return
 
     procesar_bcn, procesar_siboif, procesar_conami = _get_functions(periodo)
 
