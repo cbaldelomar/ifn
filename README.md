@@ -50,6 +50,12 @@ sqlcmd -S [servidor] -d master -E -i ./database/create_database.sql
 
 > Asegúrate de que tu servidor de SQL Server esté corriendo y de que tienes los permisos necesarios para crear bases de datos. El script configurará las tablas y objetos iniciales necesarios para almacenar y actualizar los datos procesados.
 
+### Conexión a base de datos
+
+Las credenciales que se usan para conectarse a la base de datos desde Python están en `.env`
+
+Estas son configuradas desde el script de creación de la base de datos.
+
 ## Ejecución
 
 El proyecto permite procesar los indicadores financieros de varias maneras. Dependiendo de los parámetros que pases, puedes procesar todos los periodos, el último periodo disponible, o un periodo específico.
