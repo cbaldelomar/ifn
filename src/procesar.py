@@ -35,43 +35,50 @@ def _process_data(periodo, origen):
     """
     Procesa la información basado en el periodo y origen especificado.
     """
+    origenes = (None, "BCN", "SIBOIF", "CONAMI")
+    message = None
     year, month = None, None
     especifico = False
     df_bcn = df_siboif = df_conami = pd.DataFrame()
 
     if periodo == "todos":
-        print("Procesando todos los periodos")
+        message = "Procesando todos los periodos"
     elif periodo == "ultimo":
-        print("Procesando el último periodo")
+        message = "Procesando el último periodo"
     else:
         try:
             year, month = int(periodo[:4]), int(periodo[-2:])
+
+            if not (1 <= month <= 12):
+                raise ValueError("Mes inválido")
         except ValueError:
             print("Se especificó un periodo inválido.")
             return
 
-        print(f"Procesando periodo: {year} - {month}")
+        message = f"Procesando periodo: {year} - {month}"
         especifico = True
 
-    if origen not in ("BCN", "SIBOIF", "CONAMI", None):
+    if origen not in origenes:
         print("Se especificó un origen inválido.")
         return
 
+    print(message)
+
     procesar_bcn, procesar_siboif, procesar_conami = _get_functions(periodo)
 
-    if origen in ("BCN", None):
+    if origen in (origenes[0], origenes[1]):
         print("-" * 50)
-        print("Procesando BCN...")
+        print(f"Procesando {origenes[1]}...")
         df_bcn = procesar_bcn(year, month) if especifico else procesar_bcn()
 
-    if origen in ("SIBOF", None):
+    if origen in (origenes[0], origenes[2]):
         print("-" * 50)
-        print("Procesando SIBOIF...")
+        print(f"Procesando {origenes[2]}...")
         df_siboif = procesar_siboif(year, month) if especifico else procesar_siboif()
 
-    if origen in ("CONAMI", None):
+    if origen in (origenes[0], origenes[3]):
         print("-" * 50)
-        print("Procesando CONAMI...")
+        print(f"Procesando {origenes[3]}...")
         df_conami = procesar_conami(year, month) if especifico else procesar_conami()
 
     # Combine DataFrames
