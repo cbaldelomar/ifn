@@ -45,7 +45,7 @@ sqlcmd -S [servidor] -d master -E -i ./database/create_database.sql
 
 - **Usando usuario y contraseña en Windows/Linux/MacOS**
 ```bash
-sqlcmd -S [servidor] -d master -E -i ./database/create_database.sql
+sqlcmd -S [servidor] -d master -U [username] -P [password] -i ./database/create_database.sql
 ```
 
 > Asegúrate de que tu servidor de SQL Server esté corriendo y de que tienes los permisos necesarios para crear bases de datos. El script configurará las tablas y objetos iniciales necesarios para almacenar y actualizar los datos procesados.
